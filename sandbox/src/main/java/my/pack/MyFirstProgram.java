@@ -1,27 +1,33 @@
 package my.pack;
 
+import java.sql.SQLOutput;
+
 public class MyFirstProgram {
 	public static void main(String[] args) {
 		hello("world");
 		hello("Vasya");
 		System.out.println();
 
-		double l = 25.0;
-		System.out.println("Площадь квадрата со стороной " + l + " = " + area(l));
+		Square s = new Square(5.0);
+		System.out.println("Площадь квадрата со стороной " + s.l + " = " + s.area());
 
-		double a = 8.0;
-		double b = 7.0;
-		System.out.println("Площадь прямоугольника со сторонами " + a + " и " + b + " = " + area(a, b));
+		Rectangle r = new Rectangle(8.0, 7.0);
+		System.out.println("Площадь прямоугольника со сторонами " + r.a + " и " + r.b + " = " + r.area());
+
+		Point a = new Point(10, 4);
+		Point b = new Point(-7, 19);
+		System.out.println(a.distance(b));
+
 	}
 	public static void hello (String somebody) {
 		System.out.println("Hello, " + somebody + "!");
 	}
 
-	public static double area (double l) {
-		return l * l;
-	}
 
-	public static double area (double a, double b) {
-		return a * b;
-	}
+
+
+
+	/*public static double distance (Point a, Point b) {
+		return Math.sqrt(Math.pow((a.x - b.x), 2) + Math.pow((a.y - b.y), 2));
+	}*/
 }
