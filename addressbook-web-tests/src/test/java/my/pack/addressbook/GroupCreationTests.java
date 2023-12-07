@@ -13,28 +13,23 @@ import org.apache.commons.io.FileUtils;
 
 public class GroupCreationTests {
   private WebDriver wd;
-  /*private String baseUrl;
-  private boolean acceptNextAlert = true;
-  private StringBuffer verificationErrors = new StringBuffer();*/
   private JavascriptExecutor js;
 
   @BeforeMethod(alwaysRun = true)
   public void setUp() throws Exception {
-    //System.setProperty("webdriver.chrome.driver", "C:\\Windows\\System32\\chromedriver.exe");
     wd = new ChromeDriver();
-    //baseUrl = "https://www.google.com/";
     wd.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
     js = (JavascriptExecutor) wd;
-  }
-
-  @Test
-  public void testGroupCreation() throws Exception {
     wd.get("http://localhost:8080/addressbook/group.php");
     wd.findElement(By.name("user")).clear();
     wd.findElement(By.name("user")).sendKeys("admin");
     wd.findElement(By.name("pass")).clear();
     wd.findElement(By.name("pass")).sendKeys("secret");
     wd.findElement(By.xpath("//input[@value='Login']")).click();
+  }
+
+  @Test
+  public void testGroupCreation() throws Exception {
     wd.findElement(By.linkText("groups")).click();
     wd.findElement(By.name("new")).click();
     wd.findElement(By.name("group_name")).click();
@@ -53,12 +48,7 @@ public class GroupCreationTests {
 
   @AfterMethod(alwaysRun = true)
   public void tearDown() throws Exception {
-    wd.quit();
-    /*String verificationErrorString = verificationErrors.toString();
-    if (!"".equals(verificationErrorString)) {
-      fail(verificationErrorString);
-    }*/
-  }
+    wd.quit();  }
 
   private boolean isElementPresent(By by) {
     try {
@@ -77,19 +67,4 @@ public class GroupCreationTests {
       return false;
     }
   }
-
-  /*private String closeAlertAndGetItsText() {
-    try {
-      Alert alert = driver.switchTo().alert();
-      String alertText = alert.getText();
-      if (acceptNextAlert) {
-        alert.accept();
-      } else {
-        alert.dismiss();
-      }
-      return alertText;
-    } finally {
-      acceptNextAlert = true;
-    }
-  }*/
 }
