@@ -10,7 +10,6 @@ import org.openqa.selenium.support.ui.Select;
 
 public class ContactCreationTests {
   private WebDriver wd;
-
   private JavascriptExecutor js;
 
   @BeforeMethod(alwaysRun = true)
@@ -19,16 +18,16 @@ public class ContactCreationTests {
     wd = new ChromeDriver();
     wd.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
     js = (JavascriptExecutor) wd;
-  }
-
-  @Test
-  public void testContactCreation() throws Exception {
     wd.get("http://localhost:8080/addressbook/");
     wd.findElement(By.name("user")).clear();
     wd.findElement(By.name("user")).sendKeys("admin");
     wd.findElement(By.name("pass")).clear();
     wd.findElement(By.name("pass")).sendKeys("secret");
     wd.findElement(By.id("LoginForm")).submit();
+  }
+
+  @Test
+  public void testContactCreation() throws Exception {
     wd.findElement(By.linkText("add new")).click();
     wd.findElement(By.name("firstname")).click();
     wd.findElement(By.name("firstname")).clear();
