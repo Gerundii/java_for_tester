@@ -1,0 +1,12 @@
+apply plugin: 'java'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'org.testng:testng:6.9.10'
+    //implementation 'org.seleniumhq.selenium:selenium-java:3.14.0'
+    implementation 'org.seleniumhq.selenium:selenium-java:4.16.0'
+    implementation 'org.apache.portals.jetspeed-2:jetspeed-fileutils-maven-plugin:2.3.1'
+}

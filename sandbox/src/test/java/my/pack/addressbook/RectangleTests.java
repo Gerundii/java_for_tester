@@ -1,4 +1,4 @@
-package my.pack;
+package my.pack.addressbook;
 
 import org.testng.Assert;
 import org.testng.annotations.Test;

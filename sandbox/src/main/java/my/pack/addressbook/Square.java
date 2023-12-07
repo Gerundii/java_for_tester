@@ -1,4 +1,4 @@
-package my.pack;
+package my.pack.addressbook;
 
 public class Square {
     public double l;

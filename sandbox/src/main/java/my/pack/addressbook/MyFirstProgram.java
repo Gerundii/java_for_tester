@@ -1,6 +1,4 @@
-package my.pack;
-
-import java.sql.SQLOutput;
+package my.pack.addressbook;
 
 public class MyFirstProgram {
 	public static void main(String[] args) {

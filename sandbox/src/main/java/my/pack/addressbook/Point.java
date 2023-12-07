@@ -1,6 +1,4 @@
-package my.pack;
-
-import java.text.DecimalFormat;
+package my.pack.addressbook;
 
 public class Point {
     public double x;
