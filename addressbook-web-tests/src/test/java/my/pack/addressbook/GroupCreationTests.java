@@ -15,7 +15,7 @@ public class GroupCreationTests {
     wd = new ChromeDriver();
     wd.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
     js = (JavascriptExecutor) wd;
-    wd.get("http://localhost:8080/addressbook/group.php");
+    wd.get("http://localhost:8080/addressbook/");
     login("admin", "secret");
   }
 

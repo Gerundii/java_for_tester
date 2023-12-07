@@ -19,11 +19,15 @@ public class ContactCreationTests {
     wd.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
     js = (JavascriptExecutor) wd;
     wd.get("http://localhost:8080/addressbook/");
+    login();
+  }
+
+  private void login() {
     wd.findElement(By.name("user")).clear();
     wd.findElement(By.name("user")).sendKeys("admin");
     wd.findElement(By.name("pass")).clear();
     wd.findElement(By.name("pass")).sendKeys("secret");
-    wd.findElement(By.id("LoginForm")).submit();
+    wd.findElement(By.xpath("//input[@value='Login']")).click();
   }
 
   @Test
