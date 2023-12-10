@@ -1,5 +1,6 @@
 package my.pack.addressbook;
 
+import my.pack.addressbook.appmanager.ApplicationManager;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 
