@@ -33,10 +33,16 @@ public class ContactCreationTests {
     gotoContactCreatePage();
     fillContactForm(new ContactData("John", "Young", "Oshee", "ladboy", "Senior", "6527853951", "wowcoolguy@yahoo.com", "coolguy.net", "8", "August", "2000", "MaestroCompany"));
     submitContactCreation();
+    returnToHomePage();
+    logout();
   }
 
   private void logout() {
     wd.findElement(By.linkText("Logout")).click();
+  }
+
+  private void returnToHomePage() {
+    wd.findElement(By.linkText("home page")).click();
   }
 
   private void submitContactCreation() {
@@ -76,7 +82,6 @@ public class ContactCreationTests {
 
   @AfterMethod(alwaysRun = true)
   public void tearDown() throws Exception {
-    logout();
     wd.quit();
   }
 

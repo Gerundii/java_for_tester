@@ -34,6 +34,7 @@ public class GroupCreationTests {
     fillGroupForm(new GroupData("firstTest", "firstTestHeader", "firstTestFooter"));
     submitGroupCreation();
     returnToGroupPage();
+    logout();
   }
 
   private void logout() {
@@ -70,7 +71,6 @@ public class GroupCreationTests {
 
   @AfterMethod(alwaysRun = true)
   public void tearDown() throws Exception {
-    logout();
     wd.quit();  }
 
   private boolean isElementPresent(By by) {
