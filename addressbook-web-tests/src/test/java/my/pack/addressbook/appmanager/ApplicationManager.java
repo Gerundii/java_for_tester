@@ -1,7 +1,7 @@
 package my.pack.addressbook.appmanager;
 
-import my.pack.addressbook.ContactData;
-import my.pack.addressbook.GroupData;
+import my.pack.addressbook.model.ContactData;
+import my.pack.addressbook.model.GroupData;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.Select;
