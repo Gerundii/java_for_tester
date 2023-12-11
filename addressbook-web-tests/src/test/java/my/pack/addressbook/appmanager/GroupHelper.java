@@ -4,42 +4,34 @@ import my.pack.addressbook.model.GroupData;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-public class GroupHelper {
-    private WebDriver wd;
+public class GroupHelper extends HelperBase {
     public GroupHelper(WebDriver wd) {
-        this.wd = wd;
-
-    }
-
-    public void returnToGroupPage() {
-      wd.findElement(By.linkText("group page")).click();
-    }
-
-    public void submitGroupCreation() {
-      wd.findElement(By.name("submit")).click();
-    }
-
-    public void fillGroupForm(GroupData groupData) {
-      wd.findElement(By.name("group_name")).click();
-      wd.findElement(By.name("group_name")).clear();
-      wd.findElement(By.name("group_name")).sendKeys(groupData.getGroupName());
-      wd.findElement(By.name("group_header")).click();
-      wd.findElement(By.name("group_header")).clear();
-      wd.findElement(By.name("group_header")).sendKeys(groupData.getGroupHeader());
-      wd.findElement(By.name("group_footer")).click();
-      wd.findElement(By.name("group_footer")).clear();
-      wd.findElement(By.name("group_footer")).sendKeys(groupData.getGroupFooter());
+        super(wd);
     }
 
     public void initGroupCreation() {
-      wd.findElement(By.name("new")).click();
+        click(By.name("new"));
     }
 
-    public void deleteSelectedGroups() {
-      wd.findElement(By.name("delete")).click();
+    public void fillGroupForm(GroupData groupData) {
+        type(By.name("group_name"), groupData.getGroupName());
+        type(By.name("group_header"), groupData.getGroupHeader());
+        type(By.name("group_footer"), groupData.getGroupFooter());
+    }
+
+    public void submitGroupCreation() {
+        click(By.name("submit"));
+    }
+
+    public void returnToGroupPage() {
+        click(By.linkText("group page"));
     }
 
     public void selectGroup() {
-      wd.findElement(By.name("selected[]")).click();
+        click(By.name("selected[]"));
+    }
+
+    public void deleteSelectedGroups() {
+        click(By.name("delete"));
     }
 }
