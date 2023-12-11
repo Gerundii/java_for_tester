@@ -1,9 +1,7 @@
 package my.pack.addressbook.appmanager;
 
-import my.pack.addressbook.model.ContactData;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.support.ui.Select;
 
 import java.time.Duration;
 
@@ -12,6 +10,7 @@ public class ApplicationManager {
     private SessionHelper sessionHelper;
     private NavigationHelper navigationHelper;
     private GroupHelper groupHelper;
+    private ContactHelper contactHelper;
     public JavascriptExecutor js;
 
     public void init() {
@@ -19,13 +18,27 @@ public class ApplicationManager {
         wd.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
         js = (JavascriptExecutor) wd;
         wd.get("http://localhost:8080/addressbook/");
-        groupHelper = new GroupHelper(wd);
         navigationHelper = new NavigationHelper(wd);
+        groupHelper = new GroupHelper(wd);
+        contactHelper = new ContactHelper(wd);
         sessionHelper = new SessionHelper(wd);
         sessionHelper.login("admin", "secret");
     }
 
+    public GroupHelper getGroupHelper() {
+        return groupHelper;
+    }
+    public NavigationHelper getNavigationHelper() {
+        return navigationHelper;
+    }
 
+    public SessionHelper getSessionHelper() {
+        return sessionHelper;
+    }
+
+    public ContactHelper getContactHelper() {
+        return contactHelper;
+    }
 
     public void stop() {
         wd.quit();
@@ -47,48 +60,5 @@ public class ApplicationManager {
         } catch (NoAlertPresentException e) {
             return false;
         }
-    }
-
-    public void returnToHomePage() {
-        wd.findElement(By.linkText("home page")).click();
-    }
-
-    public void submitContactCreation() {
-        wd.findElement(By.xpath("//div[@id='content']/form/input[21]")).click();
-    }
-
-    public void fillContactForm(ContactData contactData) {
-        wd.findElement(By.name("firstname")).click();
-        wd.findElement(By.name("firstname")).clear();
-        wd.findElement(By.name("firstname")).sendKeys(contactData.getFirstname());
-        wd.findElement(By.name("middlename")).clear();
-        wd.findElement(By.name("middlename")).sendKeys(contactData.getMiddlename());
-        wd.findElement(By.name("lastname")).clear();
-        wd.findElement(By.name("lastname")).sendKeys(contactData.getLastname());
-        wd.findElement(By.name("title")).clear();
-        wd.findElement(By.name("title")).sendKeys(contactData.getTitle());
-        wd.findElement(By.name("mobile")).clear();
-        wd.findElement(By.name("mobile")).sendKeys(contactData.getMobileTelephone());
-        wd.findElement(By.name("email")).clear();
-        wd.findElement(By.name("email")).sendKeys(contactData.getEmail());
-        wd.findElement(By.name("homepage")).clear();
-        wd.findElement(By.name("homepage")).sendKeys(contactData.getHomepage());
-        wd.findElement(By.name("bday")).click();
-        new Select(wd.findElement(By.name("bday"))).selectByVisibleText(contactData.getBday());
-        wd.findElement(By.name("bmonth")).click();
-        new Select(wd.findElement(By.name("bmonth"))).selectByVisibleText(contactData.getBmonth());
-        wd.findElement(By.name("byear")).click();
-        wd.findElement(By.name("byear")).clear();
-        wd.findElement(By.name("byear")).sendKeys(contactData.getByear());
-    }
-    public GroupHelper getGroupHelper() {
-        return groupHelper;
-    }
-    public NavigationHelper getNavigationHelper() {
-        return navigationHelper;
-    }
-
-    public SessionHelper getSessionHelper() {
-        return sessionHelper;
     }
 }
