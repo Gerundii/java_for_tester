@@ -12,6 +12,6 @@ public class ContactCreationTests extends TestBase{
     app.fillContactForm(new ContactData("John", "Young", "Oshee", "ladboy", "Senior", "6527853951", "wowcoolguy@yahoo.com", "coolguy.net", "8", "August", "2000"));
     app.submitContactCreation();
     app.returnToHomePage();
-    app.logout();
+    app.getSessionHelper().logout();
   }
 }
