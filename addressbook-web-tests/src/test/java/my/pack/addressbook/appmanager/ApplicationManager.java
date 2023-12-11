@@ -8,8 +8,8 @@ import org.openqa.selenium.support.ui.Select;
 import java.time.Duration;
 
 public class ApplicationManager {
-
     public WebDriver wd;
+    private NavigationHelper navigationHelper;
     private GroupHelper groupHelper;
     public JavascriptExecutor js;
 
@@ -19,6 +19,7 @@ public class ApplicationManager {
         js = (JavascriptExecutor) wd;
         wd.get("http://localhost:8080/addressbook/");
         groupHelper = new GroupHelper(wd);
+        navigationHelper = new NavigationHelper(wd);
         login("admin", "secret");
     }
 
@@ -32,10 +33,6 @@ public class ApplicationManager {
 
     public void logout() {
         wd.findElement(By.linkText("Logout")).click();
-    }
-
-    public void gotoGroupPage() {
-        wd.findElement(By.linkText("groups")).click();
     }
 
     public void stop() {
@@ -92,12 +89,10 @@ public class ApplicationManager {
         wd.findElement(By.name("byear")).clear();
         wd.findElement(By.name("byear")).sendKeys(contactData.getByear());
     }
-
-    public void gotoContactCreatePage() {
-        wd.findElement(By.linkText("add new")).click();
-    }
-
     public GroupHelper getGroupHelper() {
         return groupHelper;
+    }
+    public NavigationHelper getNavigationHelper() {
+        return navigationHelper;
     }
 }
