@@ -15,6 +15,7 @@ public class ApplicationManager {
     public JavascriptExecutor js;
 
     public void init() {
+        //System.setProperty("webdriver.chrome.driver", "C:\\Windows\\System32\\chromedriver.exe");
         wd = new ChromeDriver();
         wd.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
         js = (JavascriptExecutor) wd;
@@ -27,6 +28,7 @@ public class ApplicationManager {
     }
 
     public void stop() {
+        sessionHelper.logout();
         wd.quit();
     }
 
