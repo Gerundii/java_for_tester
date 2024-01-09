@@ -1,5 +1,6 @@
 package my.pack.addressbook;
 
+import my.pack.sandbox.Rectangle;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 

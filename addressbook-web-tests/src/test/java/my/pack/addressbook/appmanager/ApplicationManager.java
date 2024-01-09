@@ -6,6 +6,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import java.time.Duration;
 
 public class ApplicationManager {
+
     public WebDriver wd;
     private SessionHelper sessionHelper;
     private NavigationHelper navigationHelper;

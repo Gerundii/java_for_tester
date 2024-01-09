@@ -1,4 +1,4 @@
-package my.pack.addressbook;
+package my.pack.sandbox;
 
 public class MyFirstProgram {
 	public static void main(String[] args) {
