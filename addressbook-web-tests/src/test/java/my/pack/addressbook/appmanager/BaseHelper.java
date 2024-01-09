@@ -3,12 +3,10 @@ package my.pack.addressbook.appmanager;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.Select;
 
-import java.util.List;
-
-public class HelperBase {
+public class BaseHelper {
     protected WebDriver wd;
 
-    public HelperBase(WebDriver wd) {
+    public BaseHelper(WebDriver wd) {
         this.wd = wd;
     }
 
