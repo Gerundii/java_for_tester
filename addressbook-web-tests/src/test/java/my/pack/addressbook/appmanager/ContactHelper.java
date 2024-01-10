@@ -2,17 +2,27 @@ package my.pack.addressbook.appmanager;
 
 import my.pack.addressbook.model.ContactData;
 import org.openqa.selenium.By;
+import org.openqa.selenium.InvalidArgumentException;
 import org.openqa.selenium.WebDriver;
+
+import java.io.File;
 
 public class ContactHelper extends BaseHelper {
     public ContactHelper(WebDriver wd) {
         super(wd);
     }
 
+    private final String defaultPhotoPath = (new File("./src/test/resources/default.jpg").getAbsolutePath());;
+
     public void fillContactForm(ContactData contactData) {
         type(By.name("firstname"), contactData.getFirstname());
         type(By.name("middlename"), contactData.getMiddlename());
         type(By.name("lastname"), contactData.getLastname());
+        try {
+            addImg(By.xpath("//input[@type='file']"), contactData.getPhotoPath());
+        } catch (InvalidArgumentException e) {
+            addImg(By.xpath("//input[@type='file']"), defaultPhotoPath);
+        }
         type(By.name("title"), contactData.getTitle());
         type(By.name("mobile"), contactData.getMobileTelephone());
         type(By.name("email"), contactData.getEmail());
