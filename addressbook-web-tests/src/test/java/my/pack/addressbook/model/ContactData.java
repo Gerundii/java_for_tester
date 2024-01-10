@@ -1,10 +1,16 @@
 package my.pack.addressbook.model;
 
+import org.openqa.selenium.InvalidArgumentException;
+
+import java.io.File;
+import java.io.FileNotFoundException;
+
 public class ContactData {
     private final String firstname;
     private final String middlename;
     private final String lastname;
     private final String nickname;
+    private final String photoPath;
     private final String title;
     private final String mobileTelephone;
     private final String email;
@@ -18,6 +24,7 @@ public class ContactData {
         this.middlename = middlename;
         this.lastname = lastname;
         this.nickname = nickname;
+        this.photoPath = (new File("./src/test/resources/" + nickname.toLowerCase() + ".jpg").getAbsolutePath());
         this.title = title;
         this.mobileTelephone = mobileTelephone;
         this.email = email;
@@ -42,6 +49,7 @@ public class ContactData {
     public String getNickname() {
         return nickname;
     }
+    public String getPhotoPath() {return photoPath;}
 
     public String getTitle() {
         return title;
