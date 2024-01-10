@@ -25,6 +25,10 @@ public class BaseHelper {
         new Select(wd.findElement(locator)).selectByVisibleText(text);
     }
 
+    protected void addImg(By locator, String text) {
+        wd.findElement(locator).sendKeys(text);
+    }
+
     public boolean isAlertPresent() {
         try {
             wd.switchTo().alert();
