@@ -25,11 +25,11 @@ public class ApplicationManager {
     }
 
     public void init() {
-        if (browser == Browser.CHROME) {
+        if (browser.equals(Browser.CHROME)) {
             wd = new ChromeDriver();
-        } else if (browser == Browser.FIREFOX) {
+        } else if (browser.equals(Browser.FIREFOX)) {
             wd = new FirefoxDriver();
-        } else if (browser == Browser.EDGE) {
+        } else if (browser.equals(Browser.EDGE)) {
             wd = new EdgeDriver();
         }
         //System.setProperty("webdriver.chrome.driver", "C:\\Windows\\System32\\chromedriver.exe");
