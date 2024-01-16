@@ -27,7 +27,12 @@ public class BaseHelper {
 
     protected void select(By locator, String text) {
         wd.findElement(locator).click();
-        new Select(wd.findElement(locator)).selectByVisibleText(text);
+        if (text != null) {
+            String existingText = wd.findElement(locator).getAttribute("value");
+            if (! text.equals(existingText)) {
+                new Select(wd.findElement(locator)).selectByVisibleText(text);
+            }
+        }
     }
 
     protected void addImg(By locator, String text) {
@@ -47,9 +52,9 @@ public class BaseHelper {
         }
     }
 
-    public boolean isElementPresent(By by) {
+    public boolean isElementPresent(By locator) {
         try {
-            wd.findElement(by);
+            wd.findElement(locator);
             return true;
         } catch (NoSuchElementException e) {
             return false;
