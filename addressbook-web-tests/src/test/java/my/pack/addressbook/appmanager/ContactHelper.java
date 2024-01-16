@@ -3,6 +3,7 @@ package my.pack.addressbook.appmanager;
 import my.pack.addressbook.model.ContactData;
 import org.openqa.selenium.By;
 import org.openqa.selenium.InvalidArgumentException;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 
@@ -31,9 +32,14 @@ public class ContactHelper extends BaseHelper {
         select(By.name("bday"), contactData.getBday());
         select(By.name("bmonth"), contactData.getBmonth());
         type(By.name("byear"), contactData.getByear());
-        if (creation) {
+        try {
             select(By.name("new_group"), contactData.getGroup());
-        } else Assert.assertFalse(isElementPresent(By.name("new_group")));
+        } catch (NoSuchElementException e) {
+            Assert.assertFalse(isElementPresent(By.name("new_group")));
+        }
+        /*if (creation) {
+            select(By.name("new_group"), contactData.getGroup());
+        } else Assert.assertFalse(isElementPresent(By.name("new_group")));*/
     }
 
     public void submitContactCreation() {
