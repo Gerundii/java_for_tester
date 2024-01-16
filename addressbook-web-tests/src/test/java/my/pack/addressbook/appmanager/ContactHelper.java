@@ -4,6 +4,7 @@ import my.pack.addressbook.model.ContactData;
 import org.openqa.selenium.By;
 import org.openqa.selenium.InvalidArgumentException;
 import org.openqa.selenium.WebDriver;
+import org.testng.Assert;
 
 import java.io.File;
 
@@ -14,7 +15,7 @@ public class ContactHelper extends BaseHelper {
 
     private final String defaultPhotoPath = (new File("./src/test/resources/default.jpg").getAbsolutePath());;
 
-    public void fillContactForm(ContactData contactData) {
+    public void fillContactForm(ContactData contactData, boolean creation) {
         type(By.name("firstname"), contactData.getFirstname());
         type(By.name("middlename"), contactData.getMiddlename());
         type(By.name("lastname"), contactData.getLastname());
@@ -30,6 +31,9 @@ public class ContactHelper extends BaseHelper {
         select(By.name("bday"), contactData.getBday());
         select(By.name("bmonth"), contactData.getBmonth());
         type(By.name("byear"), contactData.getByear());
+        if (creation) {
+            select(By.name("new_group"), contactData.getGroup());
+        } else Assert.assertFalse(isElementPresent(By.name("new_group")));
     }
 
     public void submitContactCreation() {
