@@ -4,8 +4,18 @@ import org.openqa.selenium.InvalidArgumentException;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
 
 public class ContactData {
+
+    public static ContactData nibbler = new ContactData("Nibbler", "", "Ge", "Nibbler", "Lord", "", "nibbler@futurama.com", "", "1", "August", "2000", "testgroup");
+    public static ContactData fry = new ContactData("Phillip", "J", "Fry", "Fry", "Delivery Guy", "+982-265-265-22", "fry@futurama.com", "", "31", "December", "1999", null);
+    public static ContactData unknown = new ContactData("Unknown", "", "KumMan", "Unknown", "Somebody", "", "unknown@man.su", "", "13", "December", "1000", null);
+    public static ContactData known = new ContactData("Known", "", "Man", "Unknown", "Somebody", "", "unknown@man.su", "", "13", "December", "1000", null);
+    public static ArrayList<ContactData> contacts = new ArrayList<>(Arrays.asList(nibbler, fry, unknown, known));
+
     private final String firstname;
     private final String middlename;
     private final String lastname;
