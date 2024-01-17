@@ -33,7 +33,7 @@ public class ApplicationManager {
             wd = new EdgeDriver();
         }
         //System.setProperty("webdriver.chrome.driver", "C:\\Windows\\System32\\chromedriver.exe");
-        wd.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
+        wd.manage().timeouts().implicitlyWait(Duration.ofSeconds(1));
         js = (JavascriptExecutor) wd;
         wd.get("http://localhost:8080/addressbook/");
         navigationHelper = new NavigationHelper(wd);

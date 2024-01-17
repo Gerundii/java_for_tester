@@ -9,13 +9,19 @@ public class NavigationHelper extends BaseHelper {
     }
 
     public void gotoContactCreatePage() {
-        click(By.linkText("add new"));
+        if (! (isElementPresent(By.xpath("//h1[text()='Edit / add address book entry']")) && isElementPresent(By.name("submit")))) {
+            click(By.linkText("add new"));
+        }
     }
-
     public void gotoGroupPage() {
-        click(By.linkText("groups"));
+        if (! (isElementPresent(By.xpath("//h1[text()='Groups']")) && isElementPresent(By.name("new")))) {
+            click(By.linkText("groups"));
+        }
     }
     public void gotoHomePage() {
-        click(By.linkText("home"));
+        if (! (isElementPresent(By.id("maintable")))) {
+            click(By.linkText("home"));
+        }
+
     }
 }
