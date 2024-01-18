@@ -1,6 +1,7 @@
 package my.pack.addressbook.appmanager;
 
 import my.pack.addressbook.model.ContactData;
+import my.pack.addressbook.model.GroupData;
 import org.openqa.selenium.By;
 import org.openqa.selenium.InvalidArgumentException;
 import org.openqa.selenium.NoSuchElementException;
@@ -9,7 +10,10 @@ import org.testng.Assert;
 
 import java.io.File;
 
+import static my.pack.addressbook.tests.TestBase.app;
+
 public class ContactHelper extends BaseHelper {
+
     public ContactHelper(WebDriver wd) {
         super(wd);
     }
@@ -67,4 +71,17 @@ public class ContactHelper extends BaseHelper {
     public void submitContactModification() {
         click(By.name("update"));
     }
+
+    public boolean isAnyContactExist() {
+        return isElementPresent(By.name("selected[]"));
+    }
+
+    public void createContact(ContactData contact) {
+        app.getNavigationHelper().gotoContactCreatePage();
+        fillContactForm(contact, true);
+        submitContactCreation();
+        returnToHomePage();
+    }
+
+
 }
