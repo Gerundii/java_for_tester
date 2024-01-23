@@ -10,8 +10,6 @@ import org.testng.Assert;
 
 import java.io.File;
 
-import static my.pack.addressbook.tests.TestBase.app;
-
 public class ContactHelper extends BaseHelper {
 
     public ContactHelper(WebDriver wd) {
@@ -36,14 +34,14 @@ public class ContactHelper extends BaseHelper {
         select(By.name("bday"), contactData.getBday());
         select(By.name("bmonth"), contactData.getBmonth());
         type(By.name("byear"), contactData.getByear());
-        try {
+        /*try {
             select(By.name("new_group"), contactData.getGroup());
         } catch (NoSuchElementException e) {
             Assert.assertFalse(isElementPresent(By.name("new_group")));
-        }
-        /*if (creation) {
+        }*/
+        if (creation) {
             select(By.name("new_group"), contactData.getGroup());
-        } else Assert.assertFalse(isElementPresent(By.name("new_group")));*/
+        } else Assert.assertFalse(isElementPresent(By.name("new_group")));
     }
 
     public void submitContactCreation() {
@@ -76,8 +74,9 @@ public class ContactHelper extends BaseHelper {
         return isElementPresent(By.name("selected[]"));
     }
 
+
+
     public void createContact(ContactData contact) {
-        app.getNavigationHelper().gotoContactCreatePage();
         fillContactForm(contact, true);
         submitContactCreation();
         returnToHomePage();
