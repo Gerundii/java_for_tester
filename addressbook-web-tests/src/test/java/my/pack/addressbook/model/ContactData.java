@@ -21,6 +21,7 @@ public class ContactData {
     private final String lastname;
     private final String nickname;
     private final String photoPath;
+    private final String defaultPhotoPath;
     private final String title;
     private final String mobileTelephone;
     private final String email;
@@ -36,6 +37,7 @@ public class ContactData {
         this.lastname = lastname;
         this.nickname = nickname;
         this.photoPath = (new File("./src/test/resources/" + nickname.toLowerCase() + ".jpg").getAbsolutePath());
+        this.defaultPhotoPath = (new File("./src/test/resources/default.jpg").getAbsolutePath());
         this.title = title;
         this.mobileTelephone = mobileTelephone;
         this.email = email;
@@ -62,6 +64,8 @@ public class ContactData {
         return nickname;
     }
     public String getPhotoPath() {return photoPath;}
+
+    public String getDefaultPhotoPath() {return defaultPhotoPath;}
 
     public String getTitle() {
         return title;

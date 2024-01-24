@@ -16,7 +16,7 @@ public class ContactHelper extends BaseHelper {
         super(wd);
     }
 
-    private final String defaultPhotoPath = (new File("./src/test/resources/default.jpg").getAbsolutePath());;
+    private final String defaultPhotoPath = (new File("./src/test/resources/default.jpg").getAbsolutePath());
 
     public void fillContactForm(ContactData contactData, boolean creation) {
         type(By.name("firstname"), contactData.getFirstname());
@@ -25,7 +25,7 @@ public class ContactHelper extends BaseHelper {
         try {
             addImg(By.xpath("//input[@type='file']"), contactData.getPhotoPath());
         } catch (InvalidArgumentException e) {
-            addImg(By.xpath("//input[@type='file']"), defaultPhotoPath);
+            addImg(By.xpath("//input[@type='file']"), contactData.getDefaultPhotoPath());
         }
         type(By.name("title"), contactData.getTitle());
         type(By.name("mobile"), contactData.getMobileTelephone());
