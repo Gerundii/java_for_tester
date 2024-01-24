@@ -9,7 +9,7 @@ public class GroupDeleteTests extends TestBase{
   public void testGroupDelete() throws Exception {
     app.getNavigationHelper().gotoGroupPage();
     if (! app.getGroupHelper().isAnyGroupExist()) {
-      app.getGroupHelper().createGroup(new GroupData("testgroup", null, "firstTestFooter"));
+      app.getGroupHelper().createGroup(GroupData.testGroup);
 
     }
     app.getGroupHelper().selectGroup();
