@@ -12,9 +12,9 @@ public class ContactModificationTests extends TestBase{
             app.getNavigationHelper().gotoContactCreatePage();
             app.getContactHelper().createContact(ContactData.nibbler);
         }
-        app.getContactHelper().selectContact();
+        app.getContactHelper().selectContact(before - 2);
         app.getContactHelper().initContactModification();
-        app.getContactHelper().fillContactForm(ContactData.nibbler, false);
+        app.getContactHelper().fillContactForm(ContactData.fry, false);
         app.getContactHelper().submitContactModification();
         app.getContactHelper().returnToHomePage();
         int after = app.getContactHelper().getContactCount();

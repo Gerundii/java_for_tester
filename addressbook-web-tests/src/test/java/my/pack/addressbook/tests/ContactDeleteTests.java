@@ -12,7 +12,7 @@ public class ContactDeleteTests extends TestBase{
             app.getNavigationHelper().gotoContactCreatePage();
             app.getContactHelper().createContact(ContactData.fry);
         }
-        app.getContactHelper().selectContact();
+        app.getContactHelper().selectContact(before - 1);
         app.getContactHelper().deleteSelectedContacts();
         app.getContactHelper().submitContactDelete();
         app.getNavigationHelper().gotoHomePage();
