@@ -22,6 +22,5 @@ public class NavigationHelper extends BaseHelper {
         if (! (isElementPresent(By.id("maintable")))) {
             click(By.linkText("home"));
         }
-
     }
 }

@@ -74,8 +74,6 @@ public class ContactHelper extends BaseHelper {
         return isElementPresent(By.name("selected[]"));
     }
 
-
-
     public void createContact(ContactData contact) {
         fillContactForm(contact, true);
         submitContactCreation();
