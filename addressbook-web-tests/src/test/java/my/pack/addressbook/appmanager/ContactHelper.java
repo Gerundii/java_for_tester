@@ -2,13 +2,12 @@ package my.pack.addressbook.appmanager;
 
 import my.pack.addressbook.model.ContactData;
 import my.pack.addressbook.model.GroupData;
-import org.openqa.selenium.By;
-import org.openqa.selenium.InvalidArgumentException;
-import org.openqa.selenium.NoSuchElementException;
-import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.*;
 import org.testng.Assert;
 
 import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ContactHelper extends BaseHelper {
 
@@ -83,5 +82,16 @@ public class ContactHelper extends BaseHelper {
     }
     public int getContactCount() {
         return wd.findElements(By.name("entry")).size();
+    }
+
+    public List<ContactData> getContactList() {
+        List<ContactData> contacts = new ArrayList<ContactData>();
+        List<WebElement> elements = wd.findElements(By.xpath("//input[@name='selected[]']"));
+        for (WebElement element : elements) {
+            String email = element.getAttribute("accept");
+            ContactData contact = new ContactData(null, null, null, "default", null, null, email, null, null, null, null, null);
+            contacts.add(contact);
+        }
+        return contacts;
     }
 }
