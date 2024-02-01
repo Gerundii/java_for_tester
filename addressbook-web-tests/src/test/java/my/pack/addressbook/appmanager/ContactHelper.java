@@ -63,8 +63,9 @@ public class ContactHelper extends BaseHelper {
         acceptAlert();
     }
 
-    public void initContactModification() {
-        click(By.xpath("//img[@title='Edit']"));
+    public void initContactModification(int id) {
+        String initXpath = "//a[@href='edit.php?id=" + id + "']";
+        click(By.xpath(initXpath));
     }
 
     public void submitContactModification() {
@@ -88,8 +89,9 @@ public class ContactHelper extends BaseHelper {
         List<ContactData> contacts = new ArrayList<ContactData>();
         List<WebElement> elements = wd.findElements(By.xpath("//input[@name='selected[]']"));
         for (WebElement element : elements) {
+            int id = Integer.parseInt(element.getAttribute("id"));
             String email = element.getAttribute("accept");
-            ContactData contact = new ContactData(null, null, null, "default", null, null, email, null, null, null, null, null);
+            ContactData contact = new ContactData(id, email);
             contacts.add(contact);
         }
         return contacts;

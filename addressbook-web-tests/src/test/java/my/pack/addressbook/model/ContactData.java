@@ -7,6 +7,7 @@ import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.Objects;
 
 public class ContactData {
 
@@ -16,6 +17,7 @@ public class ContactData {
     public static ContactData known = new ContactData("Known", "", "Man", "Unknown", "Somebody", "", "unknown@man.su", "", "13", "December", "1000", null);
     public static ArrayList<ContactData> contacts = new ArrayList<>(Arrays.asList(nibbler, fry, unknown, known));
 
+    private int id;
     private final String firstname;
     private final String middlename;
     private final String lastname;
@@ -32,6 +34,7 @@ public class ContactData {
     private final String group;
 
     public ContactData(String firstname, String middlename, String lastname, String nickname, String title, String mobileTelephone, String email, String homepage, String bday, String bmonth, String byear, String group) {
+        this.id = 0;
         this.firstname = firstname;
         this.middlename = middlename;
         this.lastname = lastname;
@@ -46,6 +49,32 @@ public class ContactData {
         this.bmonth = bmonth;
         this.byear = byear;
         this.group = group;
+    }
+
+    public ContactData(int id, String email) {
+        this.id = id;
+        this.firstname = null;
+        this.middlename = null;
+        this.lastname = null;
+        this.nickname = "default";
+        this.photoPath = (new File("./src/test/resources/" + nickname.toLowerCase() + ".jpg").getAbsolutePath());
+        this.defaultPhotoPath = (new File("./src/test/resources/default.jpg").getAbsolutePath());
+        this.title = null;
+        this.mobileTelephone = null;
+        this.email = email;
+        this.homepage = null;
+        this.bday = null;
+        this.bmonth = null;
+        this.byear = null;
+        this.group = null;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public int getId() {
+        return id;
     }
 
     public String getFirstname() {
@@ -63,9 +92,14 @@ public class ContactData {
     public String getNickname() {
         return nickname;
     }
-    public String getPhotoPath() {return photoPath;}
 
-    public String getDefaultPhotoPath() {return defaultPhotoPath;}
+    public String getPhotoPath() {
+        return photoPath;
+    }
+
+    public String getDefaultPhotoPath() {
+        return defaultPhotoPath;
+    }
 
     public String getTitle() {
         return title;
@@ -91,9 +125,32 @@ public class ContactData {
         return bmonth;
     }
 
-    public String getByear() {return byear;
+    public String getByear() {
+        return byear;
     }
 
-    public String getGroup() {return group;
+    public String getGroup() {
+        return group;
+    }
+
+    @Override
+    public String toString() {
+        return "ContactData{" +
+                "id=" + id +
+                ", email='" + email + '\'' +
+                '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        ContactData that = (ContactData) o;
+        return id == that.id && Objects.equals(email, that.email);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, email);
     }
 }
