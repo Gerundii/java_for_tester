@@ -15,24 +15,10 @@ public class ContactHelper extends BaseHelper {
         super(wd);
     }
 
-    private final String defaultPhotoPath = (new File("./src/test/resources/default.jpg").getAbsolutePath());
-
     public void fillContactForm(ContactData contactData, boolean creation) {
         type(By.name("firstname"), contactData.getFirstname());
-        type(By.name("middlename"), contactData.getMiddlename());
         type(By.name("lastname"), contactData.getLastname());
-        try {
-            addImg(By.xpath("//input[@type='file']"), contactData.getPhotoPath());
-        } catch (InvalidArgumentException e) {
-            addImg(By.xpath("//input[@type='file']"), contactData.getDefaultPhotoPath());
-        }
-        type(By.name("title"), contactData.getTitle());
-        type(By.name("mobile"), contactData.getMobileTelephone());
         type(By.name("email"), contactData.getEmail());
-        type(By.name("homepage"), contactData.getHomepage());
-        select(By.name("bday"), contactData.getBday());
-        select(By.name("bmonth"), contactData.getBmonth());
-        type(By.name("byear"), contactData.getByear());
         /*try {
             select(By.name("new_group"), contactData.getGroup());
         } catch (NoSuchElementException e) {

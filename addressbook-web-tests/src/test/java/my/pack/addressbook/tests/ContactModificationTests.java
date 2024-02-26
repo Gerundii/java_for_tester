@@ -16,7 +16,7 @@ public class ContactModificationTests extends TestBase{
         app.getNavigationHelper().gotoHomePage();
         if (app.getContactHelper().getContactList().size() == 0) {
             app.getNavigationHelper().gotoContactCreatePage();
-            app.getContactHelper().createContact(ContactData.nibbler);
+            app.getContactHelper().createContact(new ContactData("Willy", "Wonka", "WWnuggets@mail.ru", null));
         }
     }
     @Test (enabled = true)
