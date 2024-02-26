@@ -81,6 +81,14 @@ public class ContactHelper extends BaseHelper {
         submitContactCreation();
         returnToHomePage();
     }
+
+    public void modifyCintact(int index, List<ContactData> before, ContactData contact) {
+        selectContact(index);
+        initContactModification(before.get(index).getId());
+        fillContactForm(contact, false);
+        submitContactModification();
+        returnToHomePage();
+    }
     public int getContactCount() {
         return wd.findElements(By.name("entry")).size();
     }
