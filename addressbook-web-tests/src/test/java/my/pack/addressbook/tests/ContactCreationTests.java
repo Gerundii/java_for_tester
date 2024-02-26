@@ -12,6 +12,7 @@ import java.util.List;
 public class ContactCreationTests extends TestBase {
     @Test (enabled = true)
     public void testContactCreation() throws Exception {
+        app.getNavigationHelper().gotoHomePage();
         List<ContactData> before = app.getContactHelper().getContactList();
         ContactData contact = new ContactData("Yo", "", "Ma", "Za", "Faka", "", "kafa@maza.su", "", "13", "December", "1000", null);
         app.getNavigationHelper().gotoContactCreatePage();

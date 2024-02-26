@@ -13,7 +13,8 @@ import java.util.List;
 public class ContactModificationTests extends TestBase{
     @BeforeMethod
     public void ensurePreconditions() {
-        if (! app.getContactHelper().isAnyContactExist()) {
+        app.getNavigationHelper().gotoHomePage();
+        if (app.getContactHelper().getContactList().size() == 0) {
             app.getNavigationHelper().gotoContactCreatePage();
             app.getContactHelper().createContact(ContactData.nibbler);
         }

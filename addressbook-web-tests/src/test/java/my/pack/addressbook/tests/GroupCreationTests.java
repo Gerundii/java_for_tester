@@ -11,9 +11,9 @@ import java.util.List;
 public class GroupCreationTests extends TestBase {
     @Test(enabled = true)
     public void testGroupCreation() throws Exception {
+        app.getNavigationHelper().gotoGroupPage();
         List<GroupData> before = app.getGroupHelper().getGroupList();
         GroupData group = new GroupData("Vivi", "Kolo", "Gaga");
-        app.getNavigationHelper().gotoGroupPage();
         app.getGroupHelper().createGroup(group);
         List<GroupData> after = app.getGroupHelper().getGroupList();
         Assert.assertEquals(after.size(), before.size() + 1);
