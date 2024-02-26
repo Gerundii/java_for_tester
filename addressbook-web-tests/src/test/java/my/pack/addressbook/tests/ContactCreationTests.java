@@ -1,9 +1,11 @@
 package my.pack.addressbook.tests;
 
 import my.pack.addressbook.model.ContactData;
+import my.pack.addressbook.model.GroupData;
 import org.testng.Assert;
 import org.testng.annotations.*;
 
+import java.util.Comparator;
 import java.util.HashSet;
 import java.util.List;
 
@@ -21,11 +23,15 @@ public class ContactCreationTests extends TestBase {
         List<ContactData> after = app.getContactHelper().getContactList();
         Assert.assertEquals(after.size(), before.size() + 1);
 
-        int max = after.stream().max((o1, o2) -> Integer.compare(o1.getId(), o2.getId())).get().getId();
+        Comparator<ContactData> byId = ((o1, o2) -> Integer.compare(o1.getId(), o2.getId()));
+
+        int max = after.stream().max(byId).get().getId();
 
         contact.setId(max);
         before.add(contact);
+        before.sort(byId);
+        after.sort(byId);
 
-        Assert.assertEquals(new HashSet<Object>(after), new HashSet<Object>(before));
+        Assert.assertEquals(before, after);
     }
 }
