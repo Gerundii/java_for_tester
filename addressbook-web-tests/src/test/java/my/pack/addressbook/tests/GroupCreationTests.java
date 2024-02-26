@@ -4,6 +4,7 @@ import my.pack.addressbook.model.GroupData;
 import org.testng.Assert;
 import org.testng.annotations.*;
 
+import java.util.Comparator;
 import java.util.HashSet;
 import java.util.List;
 
@@ -14,7 +15,7 @@ public class GroupCreationTests extends TestBase{
     List<GroupData> before = app.getGroupHelper().getGroupList();
     app.getGroupHelper().initGroupCreation();
 
-    GroupData group = new GroupData("testGroup", "testHeader", "testFooter");
+    GroupData group = new GroupData("Vivi", "Kolo", "Gaga");
 
     app.getGroupHelper().fillGroupForm(group);
     app.getGroupHelper().submitGroupCreation();
@@ -22,13 +23,8 @@ public class GroupCreationTests extends TestBase{
     List<GroupData> after = app.getGroupHelper().getGroupList();
     Assert.assertEquals(after.size(), before.size() + 1);
 
+    int max = after.stream().max((o1, o2) -> Integer.compare(o1.getId(), o2.getId())).get().getId();
 
-    int max = 0;
-    for (GroupData elem : after) {
-      if (elem.getId() > max) {
-        max = elem.getId();
-      }
-    }
     group.setId(max);
     before.add(group);
 
