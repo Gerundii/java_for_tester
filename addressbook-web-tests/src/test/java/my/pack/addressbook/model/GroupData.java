@@ -59,12 +59,12 @@ public class GroupData {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         GroupData groupData = (GroupData) o;
-        return Objects.equals(groupName, groupData.groupName);
+        return getId() == groupData.getId() && Objects.equals(getGroupName(), groupData.getGroupName());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(groupName);
+        return Objects.hash(getId(), getGroupName());
     }
 
     @Override
