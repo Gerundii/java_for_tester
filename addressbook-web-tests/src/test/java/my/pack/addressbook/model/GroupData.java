@@ -3,10 +3,6 @@ package my.pack.addressbook.model;
 import java.util.Objects;
 
 public class GroupData {
-    public static GroupData testGroup = new GroupData("testGroup", "testHeader", "testFooter");
-    public static GroupData modGroup = new GroupData("modGroup", "modHeader", "modFooter");
-    public static GroupData nullGroup = new GroupData("nullGroup", null, null);
-
     private int id;
     private final String groupName;
     private final String groupHeader;
