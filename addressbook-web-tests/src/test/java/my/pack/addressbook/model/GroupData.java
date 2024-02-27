@@ -4,9 +4,9 @@ import java.util.Objects;
 
 public class GroupData {
     private int id;
-    private final String groupName;
-    private final String groupHeader;
-    private final String groupFooter;
+    private String groupName;
+    private String groupHeader;
+    private String groupFooter;
 
     public GroupData(String groupName, String groupHeader, String groupFooter) {
         this.id = Integer.MAX_VALUE;
@@ -21,9 +21,22 @@ public class GroupData {
         this.groupHeader = groupHeader;
         this.groupFooter = groupFooter;
     }
-
-    public void setId(int id) {
+    public GroupData setId(int id) {
         this.id = id;
+        return this;
+    }
+
+    public GroupData setGroupName(String groupName) {
+        this.groupName = groupName;
+        return this;
+    }
+    public GroupData setGroupHeader(String groupHeader) {
+        this.groupHeader = groupHeader;
+        return this;
+    }
+    public GroupData setGroupFooter(String groupFooter) {
+        this.groupFooter = groupFooter;
+        return this;
     }
 
     public int getId() {

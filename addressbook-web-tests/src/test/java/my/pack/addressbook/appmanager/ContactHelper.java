@@ -1,11 +1,9 @@
 package my.pack.addressbook.appmanager;
 
 import my.pack.addressbook.model.ContactData;
-import my.pack.addressbook.model.GroupData;
 import org.openqa.selenium.*;
 import org.testng.Assert;
 
-import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -62,13 +60,13 @@ public class ContactHelper extends BaseHelper {
         return isElementPresent(By.name("selected[]"));
     }
 
-    public void createContact(ContactData contact) {
+    public void create(ContactData contact) {
         fillContactForm(contact, true);
         submitContactCreation();
         returnToHomePage();
     }
 
-    public void modifyCintact(int index, List<ContactData> before, ContactData contact) {
+    public void modify(int index, List<ContactData> before, ContactData contact) {
         selectContact(index);
         initContactModification(before.get(index).getId());
         fillContactForm(contact, false);
@@ -76,7 +74,7 @@ public class ContactHelper extends BaseHelper {
         returnToHomePage();
     }
 
-    public void deleteContact(int index) {
+    public void delete(int index) {
         selectContact(index);
         deleteSelectedContacts();
         submitContactDelete();
@@ -85,7 +83,7 @@ public class ContactHelper extends BaseHelper {
         return wd.findElements(By.name("entry")).size();
     }
 
-    public List<ContactData> getContactList() {
+    public List<ContactData> list() {
         List<ContactData> contacts = new ArrayList<ContactData>();
         List<WebElement> elements = wd.findElements(By.xpath("//input[@name='selected[]']"));
         for (WebElement element : elements) {

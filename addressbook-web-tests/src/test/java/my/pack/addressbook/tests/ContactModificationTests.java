@@ -1,31 +1,29 @@
 package my.pack.addressbook.tests;
 
 import my.pack.addressbook.model.ContactData;
-import my.pack.addressbook.model.GroupData;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import java.util.Comparator;
-import java.util.HashSet;
 import java.util.List;
 
 public class ContactModificationTests extends TestBase{
     @BeforeMethod
     public void ensurePreconditions() {
-        app.getNavigationHelper().gotoHomePage();
-        if (app.getContactHelper().getContactList().size() == 0) {
-            app.getNavigationHelper().gotoContactCreatePage();
-            app.getContactHelper().createContact(new ContactData("Willy", "Wonka", "WWnuggets@mail.ru", null));
+        app.goTo().homePage();
+        if (app.contact().list().size() == 0) {
+            app.goTo().contactCreatePage();
+            app.contact().create(new ContactData("Willy", "Wonka", "WWnuggets@mail.ru", null));
         }
     }
     @Test (enabled = true)
     public void testContactModification() {
-        List<ContactData> before = app.getContactHelper().getContactList();
+        List<ContactData> before = app.contact().list();
         int index = before.size() - 1;
         ContactData contact = new ContactData(before.get(index).getId(), "somebody@mail.ru");
-        app.getContactHelper().modifyCintact(index, before, contact);
-        List<ContactData> after = app.getContactHelper().getContactList();
+        app.contact().modify(index, before, contact);
+        List<ContactData> after = app.contact().list();
         Assert.assertEquals(after.size(), before.size());
 
         before.remove(index);

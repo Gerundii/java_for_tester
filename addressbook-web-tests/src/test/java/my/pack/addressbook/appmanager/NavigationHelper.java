@@ -8,17 +8,17 @@ public class NavigationHelper extends BaseHelper {
         super(wd);
     }
 
-    public void gotoContactCreatePage() {
+    public void contactCreatePage() {
         if (! (isElementPresent(By.xpath("//h1[text()='Edit / add address book entry']")) && isElementPresent(By.name("submit")))) {
             click(By.linkText("add new"));
         }
     }
-    public void gotoGroupPage() {
+    public void groupPage() {
         if (! (isElementPresent(By.xpath("//h1[text()='Groups']")) && isElementPresent(By.name("new")))) {
             click(By.linkText("groups"));
         }
     }
-    public void gotoHomePage() {
+    public void homePage() {
         if (! (isElementPresent(By.id("maintable")))) {
             click(By.linkText("home"));
         }
