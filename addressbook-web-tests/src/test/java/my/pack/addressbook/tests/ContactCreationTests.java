@@ -12,7 +12,7 @@ public class ContactCreationTests extends TestBase {
     public void testContactCreation() throws Exception {
         app.goTo().homePage();
         List<ContactData> before = app.contact().list();
-        ContactData contact = new ContactData("Yo", "Ma", "kafa@maza.su", null);
+        ContactData contact = new ContactData().withFirstname("Yo").withLastname("Ma").withEmail("kafa@maza.su");
         app.goTo().contactCreatePage();
         app.contact().create(contact);
         List<ContactData> after = app.contact().list();

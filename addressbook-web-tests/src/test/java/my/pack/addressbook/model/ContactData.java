@@ -10,13 +10,13 @@ import java.util.Collection;
 import java.util.Objects;
 
 public class ContactData {
-    private int id;
-    private final String firstname;
-    private final String lastname;
-    private final String email;
-    private final String group;
+    private int id = Integer.MAX_VALUE;;
+    private String firstname;
+    private String lastname;
+    private String email;
+    private String group;
 
-    public ContactData(String firstname, String lastname, String email, String group) {
+    /*public ContactData(String firstname, String lastname, String email, String group) {
         this.id = Integer.MAX_VALUE;
         this.firstname = firstname;
         this.lastname = lastname;
@@ -30,10 +30,31 @@ public class ContactData {
         this.lastname = null;
         this.email = email;
         this.group = null;
+    }*/
+
+    public ContactData withId(int id) {
+        this.id = id;
+        return this;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public ContactData withFirstname(String firstname) {
+        this.firstname = firstname;
+        return this;
+    }
+
+    public ContactData withLastname(String lastname) {
+        this.lastname = lastname;
+        return this;
+    }
+
+    public ContactData withEmail(String email) {
+        this.email = email;
+        return this;
+    }
+
+    public ContactData withGroup(String group) {
+        this.group = group;
+        return this;
     }
 
     public int getId() {

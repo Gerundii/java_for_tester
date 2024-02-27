@@ -3,12 +3,12 @@ package my.pack.addressbook.model;
 import java.util.Objects;
 
 public class GroupData {
-    private int id;
+    private int id = Integer.MAX_VALUE;;
     private String groupName;
     private String groupHeader;
     private String groupFooter;
 
-    public GroupData(String groupName, String groupHeader, String groupFooter) {
+    /*public GroupData(String groupName, String groupHeader, String groupFooter) {
         this.id = Integer.MAX_VALUE;
         this.groupName = groupName;
         this.groupHeader = groupHeader;
@@ -20,21 +20,20 @@ public class GroupData {
         this.groupName = groupName;
         this.groupHeader = groupHeader;
         this.groupFooter = groupFooter;
-    }
-    public GroupData setId(int id) {
+    }*/
+    public GroupData withId(int id) {
         this.id = id;
         return this;
     }
-
-    public GroupData setGroupName(String groupName) {
+    public GroupData withGroupName(String groupName) {
         this.groupName = groupName;
         return this;
     }
-    public GroupData setGroupHeader(String groupHeader) {
+    public GroupData withGroupHeader(String groupHeader) {
         this.groupHeader = groupHeader;
         return this;
     }
-    public GroupData setGroupFooter(String groupFooter) {
+    public GroupData withGroupFooter(String groupFooter) {
         this.groupFooter = groupFooter;
         return this;
     }

@@ -89,7 +89,7 @@ public class ContactHelper extends BaseHelper {
         for (WebElement element : elements) {
             int id = Integer.parseInt(element.getAttribute("id"));
             String email = element.getAttribute("accept");
-            ContactData contact = new ContactData(id, email);
+            ContactData contact = new ContactData().withId(id).withEmail(email);
             contacts.add(contact);
         }
         return contacts;
