@@ -1,6 +1,7 @@
 package my.pack.addressbook.appmanager;
 
 import my.pack.addressbook.model.ContactData;
+import my.pack.addressbook.model.Contacts;
 import org.openqa.selenium.*;
 import org.testng.Assert;
 
@@ -84,8 +85,8 @@ public class ContactHelper extends BaseHelper {
         return wd.findElements(By.name("entry")).size();
     }
 
-    public Set<ContactData> all() {
-        Set<ContactData> contacts = new HashSet<ContactData>();
+    public Contacts all() {
+        Contacts contacts = new Contacts();
         List<WebElement> elements = wd.findElements(By.xpath("//input[@name='selected[]']"));
         for (WebElement element : elements) {
             int id = Integer.parseInt(element.getAttribute("id"));

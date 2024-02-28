@@ -1,6 +1,7 @@
 package my.pack.addressbook.appmanager;
 
 import my.pack.addressbook.model.GroupData;
+import my.pack.addressbook.model.Groups;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -82,8 +83,8 @@ public class GroupHelper extends BaseHelper {
         return wd.findElements(By.className("group")).size();
     }
 
-    public Set<GroupData> all() {
-        Set<GroupData> groups = new HashSet<GroupData>();
+    public Groups all() {
+        Groups groups = new Groups();
         List<WebElement> elements = wd.findElements(By.className("group"));
         for (WebElement element : elements) {
             int id = Integer.parseInt(element.findElement(By.name("selected[]")).getAttribute("value"));
