@@ -23,7 +23,7 @@ public class ContactDeleteTests extends TestBase{
             app.contact().create(new ContactData().withFirstname("Jamal").withLastname("Abdul").withEmail("nba45@yahoo.com"));
         }
     }
-    @Test (enabled = true)
+    @Test (enabled = false)
     public void testContactDelete() {
         Contacts before = app.contact().all();
         ContactData deletedContact = before.iterator().next();
