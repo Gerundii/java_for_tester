@@ -36,7 +36,8 @@ public class ContactHelper extends BaseHelper {
     }
 
     public void selectContactById(int id) {
-        wd.findElement(By.xpath("//input[@id='" + id + "']")).click();
+        String selectXpath = String.format("//input[@id='%d']", id);
+        click(By.xpath(selectXpath));
     }
 
     public void deleteSelectedContacts() {
@@ -47,8 +48,8 @@ public class ContactHelper extends BaseHelper {
         acceptAlert();
     }
 
-    public void initContactModification(int id) {
-        String initXpath = "//a[@href='edit.php?id=" + id + "']";
+    public void initContactModificationById(int id) {
+        String initXpath = String.format("//a[@href='edit.php?id=%d']", id);
         click(By.xpath(initXpath));
     }
 
@@ -64,7 +65,7 @@ public class ContactHelper extends BaseHelper {
     }
 
     public void modify(ContactData contact) {
-        initContactModification(contact.getId());
+        initContactModificationById(contact.getId());
         fillContactForm(contact, false);
         submitContactModification();
         contactsCache = null;

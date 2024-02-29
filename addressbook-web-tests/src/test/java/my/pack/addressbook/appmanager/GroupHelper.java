@@ -31,12 +31,9 @@ public class GroupHelper extends BaseHelper {
         click(By.linkText("group page"));
     }
 
-    public void selectGroup(int index) {
-        wd.findElements(By.name("selected[]")).get(index).click();
-    }
-
     public void selectGroupById(int id) {
-        wd.findElement(By.xpath("//input[@value='" + id + "']")).click();
+        String selectXpath = String.format("//input[@value='%d']", id);
+        click(By.xpath(selectXpath));
     }
 
     public void deleteSelectedGroups() {
