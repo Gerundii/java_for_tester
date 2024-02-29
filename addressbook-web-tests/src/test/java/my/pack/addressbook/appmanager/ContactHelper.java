@@ -5,10 +5,7 @@ import my.pack.addressbook.model.Contacts;
 import org.openqa.selenium.*;
 import org.testng.Assert;
 
-import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 public class ContactHelper extends BaseHelper {
 
@@ -84,7 +81,7 @@ public class ContactHelper extends BaseHelper {
     public boolean isAnyContactExist() {
         return isElementPresent(By.name("selected[]"));
     }
-    public int getContactCount() {
+    public int count() {
         return wd.findElements(By.name("entry")).size();
     }
 
