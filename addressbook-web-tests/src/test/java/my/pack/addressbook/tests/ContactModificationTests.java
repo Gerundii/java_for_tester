@@ -24,7 +24,7 @@ public class ContactModificationTests extends TestBase{
             app.contact().create(new ContactData().withFirstname("Willy").withLastname("Wonka").withEmail("WWnuggets@mail.ru"));
         }
     }
-    @Test (enabled = false)
+    @Test (enabled = true)
     public void testContactModification() {
         Contacts before = app.contact().all();
         ContactData modifiedContact = before.iterator().next();
