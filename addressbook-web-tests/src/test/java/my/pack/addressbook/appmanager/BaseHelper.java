@@ -35,6 +35,10 @@ public class BaseHelper {
         }
     }
 
+    protected String getValue (By locator) {
+        return wd.findElement(locator).getAttribute("value");
+    }
+
     protected void addImg(By locator, String text) {
         wd.findElement(locator).sendKeys(text);
     }

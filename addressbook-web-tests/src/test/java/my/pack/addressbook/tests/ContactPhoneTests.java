@@ -17,7 +17,7 @@ public class ContactPhoneTests extends TestBase{
         ContactData contact = app.contact().all().iterator().next();
         ContactData contactInfoFromEditForm = app.contact().infoFromEditForm(contact);
 
-        assertThat(contact.getAllPhonesPhone(), equalTo(mergedPhones(contactInfoFromEditForm)));
+        assertThat(contact.getAllPhones(), equalTo(mergedPhones(contactInfoFromEditForm)));
     }
     public String cleanedPhones(String phone) {
         return phone.replaceAll("[-()\\s]", "");

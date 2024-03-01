@@ -1,12 +1,5 @@
 package my.pack.addressbook.model;
 
-import org.openqa.selenium.InvalidArgumentException;
-
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
 import java.util.Objects;
 
 public class ContactData {
@@ -14,6 +7,9 @@ public class ContactData {
     private String firstname;
     private String lastname;
     private String email;
+    private String email2;
+    private String email3;
+    private String allEmails;
     private String homePhone;
     private String mobilePhone;
     private String workPhone;
@@ -37,6 +33,21 @@ public class ContactData {
 
     public ContactData withEmail(String email) {
         this.email = email;
+        return this;
+    }
+
+    public ContactData withEmail2(String email2) {
+        this.email2 = email2;
+        return this;
+    }
+
+    public ContactData withEmail3(String email3) {
+        this.email3 = email3;
+        return this;
+    }
+
+    public ContactData withAllEmails(String allEmails) {
+        this.allEmails = allEmails;
         return this;
     }
 
@@ -81,6 +92,18 @@ public class ContactData {
         return email;
     }
 
+    public String getEmail2() {
+        return email2;
+    }
+
+    public String getEmail3() {
+        return email3;
+    }
+
+    public String getAllEmails() {
+        return allEmails;
+    }
+
     public String getHomePhone() {
         return homePhone;
     }
@@ -93,7 +116,7 @@ public class ContactData {
         return workPhone;
     }
 
-    public String getAllPhonesPhone() {
+    public String getAllPhones() {
         return allPhones;
     }
 
