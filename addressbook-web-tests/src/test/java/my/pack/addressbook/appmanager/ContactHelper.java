@@ -102,8 +102,11 @@ public class ContactHelper extends BaseHelper {
             String lastname = cells.get(1).getText();
             String allEmails = cells.get(4).getText();
             String allphones = cells.get(5).getText();
-            ContactData contact = new ContactData().withId(id).withFirstname(firstname).withLastname(lastname)
-                    .withAllEmails(allEmails).withAllPhones(allphones);
+            ContactData contact = new ContactData()
+                    .withId(id)
+                    .withFirstname(firstname).withLastname(lastname)
+                    .withAllEmails(allEmails)
+                    .withAllPhones(allphones);
             contactsCache.add(contact);
         }
         return new Contacts(contactsCache);
@@ -113,11 +116,17 @@ public class ContactHelper extends BaseHelper {
         initContactModificationById(contact.getId());
         String firstname = getValue(By.name("firstname"));
         String lastname = getValue(By.name("lastname"));
+        String email = getValue(By.name("email"));
+        String email2 = getValue(By.name("email2"));
+        String email3 = getValue(By.name("email3"));
         String home = getValue(By.name("home"));
         String mobile = getValue(By.name("mobile"));
         String work = getValue(By.name("work"));
         wd.navigate().back();
-        return new ContactData().withId(contact.getId()).withFirstname(firstname).withLastname(lastname)
+        return new ContactData()
+                .withId(contact.getId())
+                .withFirstname(firstname).withLastname(lastname)
+                .withEmail(email).withEmail2(email2).withEmail3(email3)
                 .withHomePhone(home).withMobilePhone(mobile).withWorkPhone(work);
     }
 }
