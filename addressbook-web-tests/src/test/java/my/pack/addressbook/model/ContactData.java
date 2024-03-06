@@ -129,19 +129,20 @@ public class ContactData {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         ContactData that = (ContactData) o;
-        return getId() == that.getId() && Objects.equals(getEmail(), that.getEmail());
+        return getId() == that.getId() && Objects.equals(getFirstname(), that.getFirstname()) && Objects.equals(getLastname(), that.getLastname());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getId(), getEmail());
+        return Objects.hash(getId(), getFirstname(), getLastname());
     }
 
     @Override
     public String toString() {
         return "ContactData{" +
                 "id=" + id +
-                ", email='" + email + '\'' +
+                ", firstname='" + firstname + '\'' +
+                ", lastname='" + lastname + '\'' +
                 '}';
     }
 
