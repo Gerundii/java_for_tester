@@ -1,5 +1,6 @@
 package my.pack.addressbook.model;
 
+import java.io.File;
 import java.util.Objects;
 
 public class ContactData {
@@ -15,6 +16,7 @@ public class ContactData {
     private String workPhone;
     private String allPhones;
     private String group;
+    private File photo;
 
     public ContactData withId(int id) {
         this.id = id;
@@ -76,6 +78,11 @@ public class ContactData {
         return this;
     }
 
+    public ContactData withPhoto(File photo) {
+        this.photo = photo;
+        return this;
+    }
+
     public int getId() {
         return id;
     }
@@ -124,25 +131,28 @@ public class ContactData {
         return group;
     }
 
+    public File getPhoto() {
+        return photo;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         ContactData that = (ContactData) o;
-        return getId() == that.getId() && Objects.equals(getFirstname(), that.getFirstname()) && Objects.equals(getLastname(), that.getLastname());
+        return getId() == that.getId() && Objects.equals(getEmail(), that.getEmail());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getId(), getFirstname(), getLastname());
+        return Objects.hash(getId(), getEmail());
     }
 
     @Override
     public String toString() {
         return "ContactData{" +
                 "id=" + id +
-                ", firstname='" + firstname + '\'' +
-                ", lastname='" + lastname + '\'' +
+                ", email='" + email + '\'' +
                 '}';
     }
 

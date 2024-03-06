@@ -3,6 +3,8 @@ package my.pack.addressbook.appmanager;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.Select;
 
+import java.io.File;
+
 public class BaseHelper {
     protected WebDriver wd;
 
@@ -39,8 +41,10 @@ public class BaseHelper {
         return wd.findElement(locator).getAttribute("value");
     }
 
-    protected void addImg(By locator, String text) {
-        wd.findElement(locator).sendKeys(text);
+    protected void attach(By locator, File file) {
+        if (file != null) {
+            wd.findElement(locator).sendKeys(file.getAbsolutePath());
+        }
     }
 
     protected void acceptAlert() {
