@@ -4,6 +4,7 @@ import my.pack.addressbook.model.GroupData;
 import my.pack.addressbook.model.Groups;
 import org.testng.annotations.*;
 
+import java.io.*;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -13,11 +14,15 @@ import static org.hamcrest.MatcherAssert.assertThat;
 
 public class GroupCreationTests extends TestBase {
     @DataProvider
-    public Iterator<Object[]> validGroups() {
+    public Iterator<Object[]> validGroups() throws IOException {
         List<Object[]> list = new ArrayList<Object[]>();
-        list.add(new Object[] {new GroupData().withGroupName("test1").withGroupHeader("header1").withGroupFooter("footer1")});
-        list.add(new Object[] {new GroupData().withGroupName("test2").withGroupHeader("header2").withGroupFooter("footer2")});
-        list.add(new Object[] {new GroupData().withGroupName("test3").withGroupHeader("header3").withGroupFooter("footer3")});
+        BufferedReader reader = new BufferedReader(new FileReader(new File("src/test/resources/groups.csv")));
+        String line = reader.readLine();
+        while (line != null) {
+            String[] split = line.split(";");
+            list.add(new Object[] {new GroupData().withGroupName(split[0]).withGroupHeader(split[1]).withGroupFooter(split[2])});
+            line  = reader.readLine();
+        }
         return list.iterator();
     }
 

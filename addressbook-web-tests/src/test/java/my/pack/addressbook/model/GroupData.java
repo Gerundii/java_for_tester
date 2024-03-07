@@ -3,7 +3,7 @@ package my.pack.addressbook.model;
 import java.util.Objects;
 
 public class GroupData {
-    private int id = Integer.MAX_VALUE;;
+    private int id = Integer.MAX_VALUE;
     private String groupName;
     private String groupHeader;
     private String groupFooter;
