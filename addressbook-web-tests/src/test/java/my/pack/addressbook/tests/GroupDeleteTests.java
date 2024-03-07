@@ -2,7 +2,6 @@ package my.pack.addressbook.tests;
 
 import my.pack.addressbook.model.GroupData;
 import my.pack.addressbook.model.Groups;
-import org.testng.Assert;
 import org.testng.annotations.*;
 
 import static org.hamcrest.CoreMatchers.equalTo;
@@ -13,7 +12,7 @@ public class GroupDeleteTests extends TestBase {
     public void ensurePreconditions() {
         app.goTo().groupPage();
         if (app.group().all().size() == 0) {
-            app.group().create(new GroupData().withGroupName("Big").withGroupHeader("Bang").withGroupFooter("Boom"));
+            app.group().create(new GroupData().withName("Big").withHeader("Bang").withFooter("Boom"));
         }
     }
 

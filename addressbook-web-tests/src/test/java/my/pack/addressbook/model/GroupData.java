@@ -1,12 +1,17 @@
 package my.pack.addressbook.model;
 
+import com.thoughtworks.xstream.annotations.XStreamAlias;
+import com.thoughtworks.xstream.annotations.XStreamOmitField;
+
 import java.util.Objects;
 
+@XStreamAlias("group")
 public class GroupData {
+    @XStreamOmitField
     private int id = Integer.MAX_VALUE;
-    private String groupName;
-    private String groupHeader;
-    private String groupFooter;
+    private String name;
+    private String header;
+    private String footer;
 
     /*public GroupData(String groupName, String groupHeader, String groupFooter) {
         this.id = Integer.MAX_VALUE;
@@ -25,16 +30,16 @@ public class GroupData {
         this.id = id;
         return this;
     }
-    public GroupData withGroupName(String groupName) {
-        this.groupName = groupName;
+    public GroupData withName(String groupName) {
+        this.name = groupName;
         return this;
     }
-    public GroupData withGroupHeader(String groupHeader) {
-        this.groupHeader = groupHeader;
+    public GroupData withHeader(String groupHeader) {
+        this.header = groupHeader;
         return this;
     }
-    public GroupData withGroupFooter(String groupFooter) {
-        this.groupFooter = groupFooter;
+    public GroupData withFooter(String groupFooter) {
+        this.footer = groupFooter;
         return this;
     }
 
@@ -42,16 +47,16 @@ public class GroupData {
         return id;
     }
 
-    public String getGroupName() {
-        return groupName;
+    public String getName() {
+        return name;
     }
 
-    public String getGroupHeader() {
-        return groupHeader;
+    public String getHeader() {
+        return header;
     }
 
-    public String getGroupFooter() {
-        return groupFooter;
+    public String getFooter() {
+        return footer;
     }
 
     @Override
@@ -59,19 +64,19 @@ public class GroupData {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         GroupData groupData = (GroupData) o;
-        return getId() == groupData.getId() && Objects.equals(getGroupName(), groupData.getGroupName());
+        return getId() == groupData.getId() && Objects.equals(getName(), groupData.getName());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getId(), getGroupName());
+        return Objects.hash(getId(), getName());
     }
 
     @Override
     public String toString() {
         return "GroupData{" +
                 "id=" + id +
-                ", groupName='" + groupName + '\'' +
+                ", groupName='" + name + '\'' +
                 '}';
     }
 

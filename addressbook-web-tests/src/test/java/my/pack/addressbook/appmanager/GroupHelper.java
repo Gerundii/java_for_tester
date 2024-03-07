@@ -18,9 +18,9 @@ public class GroupHelper extends BaseHelper {
     }
 
     public void fillGroupForm(GroupData groupData) {
-        type(By.name("group_name"), groupData.getGroupName());
-        type(By.name("group_header"), groupData.getGroupHeader());
-        type(By.name("group_footer"), groupData.getGroupFooter());
+        type(By.name("group_name"), groupData.getName());
+        type(By.name("group_header"), groupData.getHeader());
+        type(By.name("group_footer"), groupData.getFooter());
     }
 
     public void submitGroupCreation() {
@@ -91,7 +91,7 @@ public class GroupHelper extends BaseHelper {
         for (WebElement element : elements) {
             int id = Integer.parseInt(element.findElement(By.name("selected[]")).getAttribute("value"));
             String name = element.getText();
-            GroupData group = new GroupData().withId(id).withGroupName(name);
+            GroupData group = new GroupData().withId(id).withName(name);
             groupCache.add(group);
         }
         return new Groups(groupCache);
