@@ -35,7 +35,7 @@ public class ApplicationManager {
         //System.setProperty("webdriver.chrome.driver", "C:\\Windows\\System32\\chromedriver.exe");
         wd.manage().timeouts().implicitlyWait(Duration.ofSeconds(1));
         js = (JavascriptExecutor) wd;
-        wd.get("http://localhost/addressbook/");
+        wd.get("http://192.168.0.106/addressbook/");
         navigationHelper = new NavigationHelper(wd);
         groupHelper = new GroupHelper(wd);
         contactHelper = new ContactHelper(wd);

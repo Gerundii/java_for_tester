@@ -20,3 +20,13 @@ gradle-app.setting
 # JDT-specific (Eclipse Java Development Tools)
 .classpath
 .idea/misc.xml
+/.idea/libraries
+.idea/modules/sandbox.test.iml
+.idea/modules/sandbox.main.iml
+.idea/modules/sandbox.iml
+.idea/modules/addressbook-web-tests.test.iml
+.idea/modules/addressbook-web-tests.main.iml
+.idea/modules/addressbook-web-tests.iml
+.idea/modules.xml
+.idea/gradle.xml
+.idea/modules/addressbook-web-tests.main.iml
