@@ -1,5 +1,7 @@
 package my.pack.addressbook.tests;
 
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import com.thoughtworks.xstream.XStream;
 import com.thoughtworks.xstream.security.AnyTypePermission;
 import my.pack.addressbook.model.GroupData;
@@ -45,7 +47,21 @@ public class GroupCreationTests extends TestBase {
         return groups.stream().map(g -> new Object[]{g}).collect(Collectors.toList()).iterator();
     }
 
-    @Test(enabled = true, dataProvider = "validGroupsXml")
+    @DataProvider
+    public Iterator<Object[]> validGroupsJson() throws IOException {
+        BufferedReader reader = new BufferedReader(new FileReader(new File("src/test/resources/groups.json")));
+        String json = "";
+        String line = reader.readLine();
+        while (line != null) {
+            json += line;
+            line = reader.readLine();
+        }
+        Gson gson = new Gson();
+        List<GroupData> groups = gson.fromJson(json, new TypeToken<List<GroupData>>(){}.getType()); // List<GroupData>.class
+        return groups.stream().map(g -> new Object[]{g}).collect(Collectors.toList()).iterator();
+    }
+
+    @Test(enabled = true, dataProvider = "validGroupsJson")
     public void testGroupCreation(GroupData group) throws Exception {
         app.goTo().groupPage();
         Groups before = app.group().all();
