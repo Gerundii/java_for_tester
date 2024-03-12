@@ -12,7 +12,7 @@ import java.time.Duration;
 
 public class ApplicationManager {
 
-    private Browser browser;
+    private String browser;
     public WebDriver wd;
     private SessionHelper sessionHelper;
     private NavigationHelper navigationHelper;
@@ -20,16 +20,16 @@ public class ApplicationManager {
     private ContactHelper contactHelper;
     public JavascriptExecutor js;
 
-    public ApplicationManager(Browser browser) {
+    public ApplicationManager(String browser) {
         this.browser = browser;
     }
 
     public void init() {
-        if (browser.equals(Browser.CHROME)) {
+        if (browser.equals(Browser.CHROME.browserName())) {
             wd = new ChromeDriver();
-        } else if (browser.equals(Browser.FIREFOX)) {
+        } else if (browser.equals(Browser.FIREFOX.browserName())) {
             wd = new FirefoxDriver();
-        } else if (browser.equals(Browser.EDGE)) {
+        } else if (browser.equals(Browser.EDGE.browserName())) {
             wd = new EdgeDriver();
         }
         //System.setProperty("webdriver.chrome.driver", "C:\\Windows\\System32\\chromedriver.exe");
