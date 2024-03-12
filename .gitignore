@@ -33,3 +33,4 @@ gradle-app.setting
 .idea/modules/addressbook-web-tests.test.iml
 .idea/modules/addressbook-web-tests.main.iml
 .idea/modules/addressbook-web-tests.test.iml
+*.log
