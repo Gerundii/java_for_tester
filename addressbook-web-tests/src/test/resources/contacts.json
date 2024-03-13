@@ -2,21 +2,13 @@
   {
     "firstname": "Имя 0",
     "lastname": "Фамилия 0",
-    "email": "example0@example.com"
+    "email": "example0@example.com",
+    "photo": "./src/test/resources/default.jpg"
   },
   {
     "firstname": "Имя 1",
     "lastname": "Фамилия 1",
-    "email": "example1@example.com"
-  },
-  {
-    "firstname": "Имя 2",
-    "lastname": "Фамилия 2",
-    "email": "example2@example.com"
-  },
-  {
-    "firstname": "Имя 3",
-    "lastname": "Фамилия 3",
-    "email": "example3@example.com"
+    "email": "example1@example.com",
+    "photo": "./src/test/resources/default.jpg"
   }
 ]

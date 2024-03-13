@@ -1,4 +1,2 @@
-Имя 0;Фамилия 0;example0@example.com
-Имя 1;Фамилия 1;example1@example.com
-Имя 2;Фамилия 2;example2@example.com
-Имя 3;Фамилия 3;example3@example.com
+Имя 0;Фамилия 0;./src/test/resources/default.jpg;example0@example.com
+Имя 1;Фамилия 1;./src/test/resources/default.jpg;example1@example.com

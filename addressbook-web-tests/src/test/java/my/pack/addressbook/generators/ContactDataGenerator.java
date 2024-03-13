@@ -23,6 +23,7 @@ public class ContactDataGenerator {
     public String file;
     @Parameter (names = "-d", description = "Data format")
     public String format;
+    String photo = "./src/test/resources/default.jpg";
     public static void main(String[] args) throws IOException {
         ContactDataGenerator generator = new ContactDataGenerator();
         JCommander jCommander = new JCommander(generator);
@@ -51,7 +52,8 @@ public class ContactDataGenerator {
         for (int i = 0; i < count; i++) {
             contacts.add(new ContactData().withFirstname(String.format("Имя %d", i))
                     .withLastname(String.format("Фамилия %d", i))
-                    .withEmail(String.format("example%d@example.com", i)));
+                    .withEmail(String.format("example%d@example.com", i))
+                    .withPhoto(photo));
         }
         return contacts;
     }
@@ -59,7 +61,7 @@ public class ContactDataGenerator {
     private void saveAsCsv(List<ContactData> contacts, File file) throws IOException {
         try (Writer writer = new FileWriter(file)) {
             for (ContactData contact : contacts) {
-                writer.write(String.format("%s;%s;%s\n", contact.getFirstname(), contact.getLastname(), contact.getEmail()));
+                writer.write(String.format("%s;%s;%s;%s\n", contact.getFirstname(), contact.getLastname(), contact.getPhoto(), contact.getEmail()));
             }
         }
     }

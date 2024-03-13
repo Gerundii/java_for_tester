@@ -21,15 +21,14 @@ public class ContactCreationTests extends TestBase {
     @DataProvider
     public Iterator<Object[]> validContactsCsv() throws IOException {
         List<Object[]> contacts = new ArrayList<Object[]>();
-        File photo = new File("./src/test/resources/default.jpg");
         try (BufferedReader reader = new BufferedReader(new FileReader(new File("src/test/resources/contacts.csv")))) {
             String line = reader.readLine();
             while (line != null) {
                 String[] split = line.split(";");
                 contacts.add(new Object[] {new ContactData().withFirstname(split[0])
                         .withLastname(split[1])
-                        .withPhoto(photo)
-                        .withEmail(split[2])});
+                        .withPhoto(split[2])
+                        .withEmail(split[3])});
                 line = reader.readLine();
             }
         }
@@ -49,7 +48,7 @@ public class ContactCreationTests extends TestBase {
             return contacts.stream().map(g -> new Object[]{g}).collect(Collectors.toList()).iterator();
         }
     }
-    @Test (enabled = true, dataProvider = "validContactsJson")
+    @Test (enabled = true, dataProvider = "validContactsCsv")
     public void testContactCreation(ContactData contact) throws Exception {
         app.goTo().homePage();
         Contacts before = app.contact().all();
