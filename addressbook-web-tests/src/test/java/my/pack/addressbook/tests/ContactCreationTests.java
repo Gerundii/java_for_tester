@@ -42,12 +42,4 @@ public class ContactCreationTests extends TestBase {
         assertThat(after, equalTo(before.withAdded(contact.withId(after.stream().mapToInt(o -> o.getId()).max().getAsInt()))));
 
     }
-    @Test
-    public void testCurrentDir() {
-        File currentDir = new File(".");
-        System.out.println(currentDir.getAbsolutePath());
-        File photo = new File("./src/test/resources/default.jpg");
-        System.out.println(photo.getAbsolutePath());
-        System.out.println(photo.exists());
-    }
 }
