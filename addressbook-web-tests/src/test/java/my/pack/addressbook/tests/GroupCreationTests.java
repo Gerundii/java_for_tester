@@ -27,7 +27,10 @@ public class GroupCreationTests extends TestBase {
             String line = reader.readLine();
             while (line != null) {
                 String[] split = line.split(";");
-                list.add(new Object[]{new GroupData().withName(split[0] + "csv").withHeader(split[1] + "csv").withFooter(split[2] + "csv")});
+                list.add(new Object[]{new GroupData()
+                        .withName(split[0] + "csv")
+                        .withHeader(split[1] + "csv")
+                        .withFooter(split[2] + "csv")});
                 line = reader.readLine();
             }
             return list.iterator();
