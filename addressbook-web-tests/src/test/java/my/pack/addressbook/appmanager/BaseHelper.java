@@ -41,9 +41,9 @@ public class BaseHelper {
         return wd.findElement(locator).getAttribute("value");
     }
 
-    protected void attach(By locator, File file) {
+    protected void attach(By locator, String file) {
         if (file != null) {
-            wd.findElement(locator).sendKeys(file.getAbsolutePath());
+            wd.findElement(locator).sendKeys(new File(file).getAbsolutePath());
         }
     }
 

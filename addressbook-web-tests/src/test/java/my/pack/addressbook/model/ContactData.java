@@ -21,7 +21,8 @@ public class ContactData {
     private String workPhone;
     private String allPhones;
     private String group;
-    private File photo;
+    @Expose
+    private String photo;
 
     public ContactData withId(int id) {
         this.id = id;
@@ -83,7 +84,7 @@ public class ContactData {
         return this;
     }
 
-    public ContactData withPhoto(File photo) {
+    public ContactData withPhoto(String photo) {
         this.photo = photo;
         return this;
     }
@@ -136,7 +137,7 @@ public class ContactData {
         return group;
     }
 
-    public File getPhoto() {
+    public String getPhoto() {
         return photo;
     }
 
