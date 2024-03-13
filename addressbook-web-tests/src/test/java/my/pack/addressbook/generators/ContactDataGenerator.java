@@ -50,8 +50,8 @@ public class ContactDataGenerator {
     private List<ContactData> generateContacts(int count) {
         List<ContactData> contacts = new ArrayList<ContactData>();
         for (int i = 0; i < count; i++) {
-            contacts.add(new ContactData().withFirstname(String.format("Имя %d", i))
-                    .withLastname(String.format("Фамилия %d", i))
+            contacts.add(new ContactData().withFirstname(String.format("Name %d", i))
+                    .withLastname(String.format("Family %d", i))
                     .withEmail(String.format("example%d@example.com", i))
                     .withPhoto(photo));
         }

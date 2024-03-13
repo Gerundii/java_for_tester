@@ -1,13 +1,13 @@
 [
   {
-    "firstname": "Имя 0",
-    "lastname": "Фамилия 0",
+    "firstname": "Name 0",
+    "lastname": "Family 0",
     "email": "example0@example.com",
     "photo": "./src/test/resources/default.jpg"
   },
   {
-    "firstname": "Имя 1",
-    "lastname": "Фамилия 1",
+    "firstname": "Name 1",
+    "lastname": "Family 1",
     "email": "example1@example.com",
     "photo": "./src/test/resources/default.jpg"
   }
