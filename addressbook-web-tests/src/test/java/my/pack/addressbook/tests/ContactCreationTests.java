@@ -1,13 +1,18 @@
 package my.pack.addressbook.tests;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.reflect.TypeToken;
 import my.pack.addressbook.model.ContactData;
 import my.pack.addressbook.model.Contacts;
+import my.pack.addressbook.model.GroupData;
 import org.testng.annotations.*;
 
 import java.io.*;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -30,11 +35,24 @@ public class ContactCreationTests extends TestBase {
         }
         return contacts.iterator();
     }
-    @Test (enabled = true, dataProvider = "validContactsCsv")
+    @DataProvider
+    public Iterator<Object[]> validContactsJson() throws IOException {
+        try (BufferedReader reader = new BufferedReader(new FileReader(new File("src/test/resources/contacts.json")))) {
+            String json = "";
+            String line = reader.readLine();
+            while (line != null) {
+                json += line;
+                line = reader.readLine();
+            }
+            Gson gson = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().setPrettyPrinting().create();
+            List<ContactData> contacts = gson.fromJson(json, new TypeToken<List<ContactData>>(){}.getType()); // List<ContactData>.class
+            return contacts.stream().map(g -> new Object[]{g}).collect(Collectors.toList()).iterator();
+        }
+    }
+    @Test (enabled = true, dataProvider = "validContactsJson")
     public void testContactCreation(ContactData contact) throws Exception {
         app.goTo().homePage();
         Contacts before = app.contact().all();
-        //ContactData contact = new ContactData().withFirstname("Bzezhik").withLastname("Kshishtof").withPhoto(photo).withEmail("oleiUp@example.com");
         app.goTo().contactCreatePage();
         app.contact().create(contact);
         assertThat(app.contact().count(), equalTo(before.size() + 1));
