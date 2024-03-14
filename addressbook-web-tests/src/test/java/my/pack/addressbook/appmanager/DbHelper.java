@@ -27,11 +27,6 @@ public class DbHelper {
     }
 
     public Groups groups () {
-        /*sessionFactory.inTransaction(session -> {
-            session.createSelectionQuery("from GroupData", GroupData.class)
-                    .getResultList()
-                    .forEach(group -> out.println(group));
-        });*/
         Session session = sessionFactory.openSession();
         session.beginTransaction();
         List<GroupData> result = session.createQuery("from GroupData", GroupData.class).list();
