@@ -1,7 +1,6 @@
 package my.pack.addressbook.tests;
 
-import my.pack.addressbook.model.GroupData;
-import org.hibernate.Session;
+import my.pack.addressbook.model.ContactData;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.MetadataSources;
 import org.hibernate.boot.registry.StandardServiceRegistry;
@@ -23,7 +22,7 @@ public class HBConnectionTest {
         try {
             sessionFactory =
                     new MetadataSources(registry)
-                            .addAnnotatedClass(GroupData.class)
+                            .addAnnotatedClass(ContactData.class)
                             .buildMetadata()
                             .buildSessionFactory();
         }
@@ -37,9 +36,9 @@ public class HBConnectionTest {
     @Test
     public void testHBConnection() {
         sessionFactory.inTransaction(session -> {
-            session.createSelectionQuery("from GroupData", GroupData.class)
+            session.createSelectionQuery("from ContactData where deprecated is null", ContactData.class) // from ContactData where YEAR(deprecated) = 0000
                     .getResultList()
-                    .forEach(event -> out.println(event));
+                    .forEach(group -> out.println(group));
         });
 
     }

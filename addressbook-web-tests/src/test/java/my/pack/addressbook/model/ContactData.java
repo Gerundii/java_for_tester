@@ -1,28 +1,52 @@
 package my.pack.addressbook.model;
 
 import com.google.gson.annotations.Expose;
+import org.hibernate.annotations.Type;
 
+import jakarta.persistence.*;
 import java.io.File;
+import java.sql.Date;
+import java.sql.Timestamp;
 import java.util.Objects;
 
+@Entity
+@Table(name = "addressbook")
 public class ContactData {
+    @Id
+    @Column(name = "id")
     private int id = Integer.MAX_VALUE;;
     @Expose
+    @Column (name = "firstname")
     private String firstname;
     @Expose
+    @Column (name = "lastname")
     private String lastname;
     @Expose
+    @Column (name = "email")
     private String email;
+    @Column (name = "email2")
     private String email2;
+    @Column (name = "email3")
     private String email3;
+    @Transient
     private String allEmails;
+    @Column (name = "home")
     private String homePhone;
+    @Column (name = "mobile")
     private String mobilePhone;
+    @Column (name = "work")
     private String workPhone;
+    @Transient
     private String allPhones;
+    @Transient
     private String group;
     @Expose
+    @Column (name = "photo")
     private String photo;
+
+    @Column (name = "deprecated")
+    private Timestamp deprecated;
+
 
     public ContactData withId(int id) {
         this.id = id;
@@ -89,6 +113,11 @@ public class ContactData {
         return this;
     }
 
+    public ContactData withDeprecated(Timestamp deprecated) {
+        this.deprecated = deprecated;
+        return this;
+    }
+
     public int getId() {
         return id;
     }
@@ -141,6 +170,10 @@ public class ContactData {
         return photo;
     }
 
+    public Timestamp getDeprecated() {
+        return deprecated;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -157,9 +190,11 @@ public class ContactData {
     @Override
     public String toString() {
         return "ContactData{" +
-                "firstname='" + firstname + '\'' +
+                "id=" + id +
+                ", firstname='" + firstname + '\'' +
                 ", lastname='" + lastname + '\'' +
                 ", email='" + email + '\'' +
+                ", deprecated=" + deprecated +
                 '}';
     }
 

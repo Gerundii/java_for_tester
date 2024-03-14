@@ -3,20 +3,16 @@ package my.pack.addressbook.model;
 import com.google.gson.annotations.Expose;
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 import com.thoughtworks.xstream.annotations.XStreamOmitField;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
-import org.hibernate.annotations.Type;
+import jakarta.persistence.*;
 
 import java.util.Objects;
 
 @XStreamAlias("group")
 @Entity
-@Table (name = "group_list")
+@Table(name = "group_list")
 public class GroupData {
     @Id
-    @Column (name = "group_id")
+    @Column(name = "group_id")
     @XStreamOmitField
     private int id = Integer.MAX_VALUE;
     @Column (name = "group_name")
