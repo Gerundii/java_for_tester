@@ -24,16 +24,21 @@ public class ContactData {
     @Expose
     @Column (name = "email")
     private String email;
+    @Expose
     @Column (name = "email2")
     private String email2;
+    @Expose
     @Column (name = "email3")
     private String email3;
     @Transient
     private String allEmails;
+    @Expose
     @Column (name = "home")
     private String homePhone;
+    @Expose
     @Column (name = "mobile")
     private String mobilePhone;
+    @Expose
     @Column (name = "work")
     private String workPhone;
     @Transient

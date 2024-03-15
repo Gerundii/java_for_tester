@@ -44,3 +44,7 @@ addressbook-web-tests/out/test/resources/contacts.json
 addressbook-web-tests/src/test/resources/contacts.json
 addressbook-web-tests/src/test/resources/contacts.json
 addressbook-web-tests/src/test/resources/contacts.csv
+addressbook-web-tests/out/test/resources/contacts.csv
+addressbook-web-tests/out/test/resources/contacts.json
+addressbook-web-tests/src/test/resources/contacts.csv
+addressbook-web-tests/src/test/resources/contacts.json
