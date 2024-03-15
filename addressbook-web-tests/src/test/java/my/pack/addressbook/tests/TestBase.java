@@ -1,6 +1,8 @@
 package my.pack.addressbook.tests;
 
 import my.pack.addressbook.appmanager.ApplicationManager;
+import my.pack.addressbook.model.ContactData;
+import my.pack.addressbook.model.Contacts;
 import my.pack.addressbook.model.GroupData;
 import my.pack.addressbook.model.Groups;
 import org.hamcrest.CoreMatchers;
@@ -52,7 +54,22 @@ public class TestBase {
             Groups dbGroups = app.db().groups();
             Groups uiGroups = app.group().all();
             assertThat(uiGroups, equalTo(dbGroups.stream()
-                    .map(group -> new GroupData().withId(group.getId()).withName(group.getName()))
+                    .map(group -> new GroupData()
+                            .withId(group.getId())
+                            .withName(group.getName()))
+                    .collect(Collectors.toSet())));
+        }
+    }
+
+    public void verifyContactsListInUI() {
+        if (Boolean.getBoolean("verifyUI")) {
+            Contacts dbContacts = app.db().contacts();
+            Contacts uiContacts = app.contact().all();
+            assertThat(uiContacts, equalTo(dbContacts.stream()
+                    .map(contact -> new ContactData()
+                            .withId(contact.getId())
+                            .withFirstname(contact.getFirstname())
+                            .withLastname(contact.getLastname()))
                     .collect(Collectors.toSet())));
         }
     }
