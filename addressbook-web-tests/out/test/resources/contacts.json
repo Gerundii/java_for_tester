@@ -3,12 +3,33 @@
     "firstname": "Name 0",
     "lastname": "Family 0",
     "email": "example0@example.com",
+    "email2": "anotherone0@example.com",
+    "email3": "onemore0@example.com",
+    "homePhone": "0 0",
+    "mobilePhone": "00 00",
+    "workPhone": "000 000",
     "photo": "./src/test/resources/default.jpg"
   },
   {
     "firstname": "Name 1",
     "lastname": "Family 1",
     "email": "example1@example.com",
+    "email2": "anotherone1@example.com",
+    "email3": "onemore1@example.com",
+    "homePhone": "1 1",
+    "mobilePhone": "11 11",
+    "workPhone": "111 111",
+    "photo": "./src/test/resources/default.jpg"
+  },
+  {
+    "firstname": "Name 2",
+    "lastname": "Family 2",
+    "email": "example2@example.com",
+    "email2": "anotherone2@example.com",
+    "email3": "onemore2@example.com",
+    "homePhone": "2 2",
+    "mobilePhone": "22 22",
+    "workPhone": "222 222",
     "photo": "./src/test/resources/default.jpg"
   }
 ]
