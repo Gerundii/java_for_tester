@@ -29,7 +29,7 @@ public class ContactHelper extends BaseHelper {
             Assert.assertFalse(isElementPresent(By.name("new_group")));
         }*/
         if (creation) {
-            select(By.name("new_group"), contactData.getGroup());
+            //select(By.name("new_group"), contactData.getGroup());
         } else Assert.assertFalse(isElementPresent(By.name("new_group")));
     }
 
