@@ -6,6 +6,7 @@ import com.google.gson.reflect.TypeToken;
 import my.pack.addressbook.model.ContactData;
 import my.pack.addressbook.model.Contacts;
 import my.pack.addressbook.model.GroupData;
+import my.pack.addressbook.model.Groups;
 import org.testng.annotations.*;
 
 import java.io.*;
@@ -48,8 +49,23 @@ public class ContactCreationTests extends TestBase {
             return contacts.stream().map(g -> new Object[]{g}).collect(Collectors.toList()).iterator();
         }
     }
+
+    @BeforeMethod
+    public void ensurePreconditions() {
+        if (app.db().groups().size() == 0) {
+            app.goTo().groupPage();
+            app.group().create(new GroupData()
+                    .withName("Big")
+                    .withHeader("Bang")
+                    .withFooter("Boom"));
+        }
+    }
     @Test (enabled = true, dataProvider = "validContactsJson")
     public void testContactCreation(ContactData contact) throws Exception {
+        //Получаем список групп из БД
+        Groups groups = app.db().groups();
+        //Добавляем к объекту класса ContactData любую группу из БД
+        contact.inGroup(groups.iterator().next());
         app.goTo().homePage();
         Contacts before = app.db().contacts();
         app.goTo().contactCreatePage();

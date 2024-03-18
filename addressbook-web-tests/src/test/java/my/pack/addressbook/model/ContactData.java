@@ -219,4 +219,9 @@ public class ContactData {
                 '}';
     }
 
+    //Добавляем к объекту класса ContactData любую группу из БД
+    public ContactData inGroup(GroupData group) {
+        groups.add(group);
+        return this;
+    }
 }

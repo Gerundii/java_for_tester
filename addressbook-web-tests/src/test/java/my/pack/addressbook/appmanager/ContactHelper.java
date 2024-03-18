@@ -29,7 +29,8 @@ public class ContactHelper extends BaseHelper {
             Assert.assertFalse(isElementPresent(By.name("new_group")));
         }*/
         if (creation) {
-            //select(By.name("new_group"), contactData.getGroup());
+            //Из множества групп объекта класса ContactData выбираем одну, берем ее имя и выбираем эту группу в интерфейсе при создании контакта
+            select(By.name("new_group"), contactData.getGroups().iterator().next().getName());
         } else Assert.assertFalse(isElementPresent(By.name("new_group")));
     }
 
