@@ -1,4 +1,4 @@
-package my.pack.addressbook;
+package my.pack.sandbox;
 
 import my.pack.sandbox.Square;
 import org.testng.Assert;
