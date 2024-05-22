@@ -19,7 +19,7 @@ public class ContactDeleteTests extends TestBase{
     public void ensurePreconditions() {
         if (app.db().contacts().size() == 0) {
             app.goTo().contactCreatePage();
-            app.contact().create(new ContactData()
+            app.contact().createShort(new ContactData()
                     .withFirstname("Jamal")
                     .withLastname("Abdul")
                     .withEmail("nba45@yahoo.com"));
