@@ -34,6 +34,14 @@ public class ContactHelper extends BaseHelper {
         } else Assert.assertFalse(isElementPresent(By.name("new_group")));
     }
 
+
+
+    public void fillContactFormShort(ContactData contactData) {
+        type(By.name("firstname"), contactData.getFirstname());
+        type(By.name("lastname"), contactData.getLastname());
+        type(By.name("email"), contactData.getEmail());
+    }
+
     public void submitContactCreation() {
         click(By.xpath("//div[@id='content']/form/input[21]"));
     }
@@ -66,6 +74,13 @@ public class ContactHelper extends BaseHelper {
 
     public void create(ContactData contact) {
         fillContactForm(contact, true);
+        submitContactCreation();
+        contactsCache = null;
+        returnToHomePage();
+    }
+
+    public void createShort(ContactData contact) {
+        fillContactFormShort(contact);
         submitContactCreation();
         contactsCache = null;
         returnToHomePage();
