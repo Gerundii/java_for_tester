@@ -20,7 +20,7 @@ public class ContactModificationTests extends TestBase{
     public void ensurePreconditions() {
         if (app.db().contacts().size() == 0) {
             app.goTo().contactCreatePage();
-            app.contact().create(new ContactData()
+            app.contact().createShort(new ContactData()
                     .withFirstname("Willy")
                     .withLastname("Wonka")
                     .withEmail("WWnuggets@mail.ru"));
